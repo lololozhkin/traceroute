@@ -1,5 +1,4 @@
 import threading
-import time
 from collections import defaultdict
 
 import ipwhois
@@ -89,11 +88,11 @@ class Tracerouter:
         for ttl in range(1, self.max_hops + 1):
             ips_at_ttl = set()
             ip_to_delays = defaultdict(list)
-            for time in range(self.times):
-                if time >= len(result[ttl]):
+            for t in range(self.times):
+                if t >= len(result[ttl]):
                     break
 
-                ip, delay = result[ttl][time]
+                ip, delay = result[ttl][t]
                 ip_to_delays[ip].append(delay)
                 ips_at_ttl.add(ip)
 
@@ -112,14 +111,13 @@ class Tracerouter:
                     continue
 
                 ip = ips_at_ttl[i]
-                ip_str = f'{ip}'
                 asn_str = f"({ip_to_asn[ip]})" if self.verb else ""
 
                 delays = "  ".join(
                     format_delay(delay) for delay in ip_to_delays[ip]
                 )
 
-                res.append(f'{ip_str} {asn_str}  {delays}')
+                res.append(f'{ip} {asn_str}  {delays}')
 
                 counter -= len(ip_to_delays[ip])
                 i += 1
