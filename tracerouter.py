@@ -6,14 +6,19 @@ from scapy.sendrecv import sniff
 from ip_version import IpVersion
 from routing_type import RoutingType
 from scapy.layers.inet import IP
+from scapy.layers.inet6 import IPv6
 from typing import Callable
 
 from concurrent.futures import ThreadPoolExecutor
 
 
-def get_my_ip():
-    p = IP(dst='8.8.8.8')
-    return p.src
+def get_my_ip(version):
+    if version == 'ipv4':
+        p = IP(dst='8.8.8.8')
+        return p.src
+    else:
+        p = IPv6(dst='2001:4860:4860::8888')
+        return p.src
 
 
 class Tracerouter:
@@ -32,7 +37,7 @@ class Tracerouter:
         self.timeout = timeout
         self.times = times
         self.max_hops = max_hops
-        self.src_ip = get_my_ip()
+        self.src_ip = get_my_ip(ip_version.ver_str)
         self._results = []
         self.dst_port = dst_port
         self.max_workers = max_workers
