@@ -69,6 +69,10 @@ def main():
     parser = get_parser()
     args = parser.parse_args()
 
+    if args.timeout <= 0:
+        print('Timeout must be positive')
+        return
+
     ip_v_str = ip_version(args.address)
     if not check_dict[ip_v_str](args.address):
         print('IP address is not correct')
@@ -88,7 +92,9 @@ def main():
         args.address,
         proto_dict[args.proto],
         ip_v,
-        args.port
+        args.port,
+        timeout=args.timeout,
+        max_hops=args.max_count
     )
 
     traceroute.start()

@@ -25,8 +25,8 @@ def get_parser():
         '-n',
         '--max-count',
         type=int,
-        help='Set the max request count',
-        default=3
+        help='Set the max hops count, by default it is 30',
+        default=30
     )
     parser.add_argument(
         'address',
