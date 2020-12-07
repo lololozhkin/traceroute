@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
-import tracerouter
-from ip_version import IpVersion
+from utills import tracerouter
+from ip_versions.ip_version import IpVersion
 
 
 class RoutingType(ABC):

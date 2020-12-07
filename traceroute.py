@@ -1,16 +1,14 @@
 #!/usr/bin/env python3
-import ipv4
-import ipv6
-from parser import get_parser
 
-import tracerouter
+from ip_versions import ipv4, ipv6
+from utills.parser import get_parser
+
+from utills import tracerouter
 from scapy.layers.inet import IP
 from scapy.sendrecv import send
 
-import udp_routing
-import tcp_routing
-import icmpv4_routing
-import icmpv6_routing
+from routing_types.with_ports import tcp_routing, udp_routing
+from routing_types.icmp_routing import icmpv4_routing, icmpv6_routing
 
 import socket
 

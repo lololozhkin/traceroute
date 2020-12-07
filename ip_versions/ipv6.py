@@ -1,4 +1,4 @@
-from ip_version import IpVersion
+from ip_versions.ip_version import IpVersion
 from scapy.layers.inet6 import IPv6
 
 

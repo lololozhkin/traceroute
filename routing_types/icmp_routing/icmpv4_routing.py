@@ -1,8 +1,8 @@
-from icmp_routing import ICMPRouting
-from ip_version import IpVersion
-from tracerouter import Tracerouter
-
 from scapy.layers.inet import ICMP, ICMPerror
+
+from .icmp_routing import ICMPRouting
+from ip_versions.ip_version import IpVersion
+from utills.tracerouter import Tracerouter
 
 
 class ICMPv4Routing(ICMPRouting):

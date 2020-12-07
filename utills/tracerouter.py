@@ -4,8 +4,8 @@ from collections import defaultdict
 import ipwhois
 from scapy.sendrecv import sniff
 
-from ip_version import IpVersion
-from routing_type import RoutingType
+from ip_versions.ip_version import IpVersion
+from routing_types.routing_type import RoutingType
 from scapy.layers.inet import IP
 from scapy.layers.inet6 import IPv6
 from typing import Callable

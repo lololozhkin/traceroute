@@ -1,8 +1,8 @@
-from scapy.layers.inet import TCP, TCPerror
+from ip_versions.ip_version import IpVersion
+from .routing_with_ports import PortRouting
+from utills.tracerouter import Tracerouter
 
-from ip_version import IpVersion
-from routing_with_ports import PortRouting
-from tracerouter import Tracerouter
+from scapy.layers.inet import TCP, TCPerror
 
 
 class TCPRouting(PortRouting):

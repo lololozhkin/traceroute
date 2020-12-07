@@ -1,8 +1,8 @@
-from ip_version import IpVersion
-from routing_with_ports import PortRouting
+from ip_versions.ip_version import IpVersion
+from .routing_with_ports import PortRouting
 from scapy.layers.inet import UDP, UDPerror
 
-from tracerouter import Tracerouter
+from utills.tracerouter import Tracerouter
 
 
 class UDPRouting(PortRouting):
