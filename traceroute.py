@@ -94,7 +94,8 @@ def main():
         ip_v,
         args.port,
         timeout=args.timeout,
-        max_hops=args.max_count
+        max_hops=args.max_count,
+        verb=args.verbose
     )
 
     traceroute.start()

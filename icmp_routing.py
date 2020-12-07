@@ -66,6 +66,7 @@ class ICMPRouting(RoutingType):
 
     def handle_packet(self, packet):
         ip_layer = packet.getlayer(self.ip_layer)
+        cur_time = time.time()
 
         if packet.haslayer(self.error_layer):
             icmp = packet.getlayer(self.error_layer)
@@ -78,9 +79,7 @@ class ICMPRouting(RoutingType):
 
         packet_id = icmp.id if icmp is not None else 2 ** 16
 
-        cur_time = time.time()
         ttl, packet_time = self.id_to_ttl_and_time[packet_id]
         delay = cur_time - packet_time
 
         return ip_layer.src, ttl, delay
-

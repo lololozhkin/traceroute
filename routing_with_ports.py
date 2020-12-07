@@ -67,11 +67,11 @@ class PortRouting(RoutingType):
 
     def handle_packet(self, packet):
         ip_layer = packet.getlayer(self.ip_layer)
+        cur_time = time.time()
 
         port = self.get_src_port_from_me(ip_layer)
         port = port if port is not None else 2 ** 16
 
-        cur_time = time.time()
         ttl, packet_time = self.port_to_ttl_and_time[port]
         delay = cur_time - packet_time
 

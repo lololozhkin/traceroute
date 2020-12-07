@@ -29,6 +29,12 @@ def get_parser():
         default=30
     )
     parser.add_argument(
+        '-v',
+        '--verbose',
+        action='store_true',
+        help='Show ASN for ip addresses if this flag is set'
+    )
+    parser.add_argument(
         'address',
         type=str,
         help='Address of the endpoint'
